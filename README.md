@@ -1,2 +1,4 @@
-# clt23
-Demo repo for vanity domain: golangleipzig.space/clt23
+# CLT23
+
+Demo repo for vanity domain: [golangleipzig.space/clt23](https://golangleipzig.space/clt23)
+
