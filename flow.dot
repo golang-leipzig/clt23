@@ -1,0 +1,16 @@
+digraph g {
+    graph [fontname="AvantGarde-Book"];
+    node [fontname="AvantGarde-Book" shape="box" pad=0.7];
+    edge [fontname="AvantGarde-Book"];
+
+    "golangleipzig.space/clt23" [label=<<FONT COLOR="darkgray">https://</FONT>golangleipzig.space/clt23<FONT COLOR="darkgray">?go-get=1</FONT>>];
+    "git clone" [label=<git clone <FONT COLOR="darkgray">https://...</FONT>>];
+    "github.com/golangleipzig/clt23" [label=<golangleipzig.space/clt23 git <B>github.com/golangleipzig/clt23</B>>];
+    "git clone" [label=<git clone <FONT COLOR="darkgray">into module cache</FONT>>];
+
+    "go install golangleipzig.space/clt23" -> "golangleipzig.space/clt23";
+    "golangleipzig.space/clt23" -> "github.com/golangleipzig/clt23" [label=<<FONT COLOR="darkgray">html, meta tag</FONT>> labeldistance=4];
+    "github.com/golangleipzig/clt23" -> "git clone" [label=<<FONT COLOR="darkgray">go tool calls VCS</FONT>>];
+    "git clone" -> "go build ...";
+    "go build ..." -> "go install ...";
+}
