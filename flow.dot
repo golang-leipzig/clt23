@@ -1,5 +1,5 @@
 digraph g {
-    label="go install flow | golangleipzig.space | 02/2023" fontsize="10";
+    label="go install flow &middot; golangleipzig.space &middot; 02/2023" fontsize="10";
     graph [fontname="AvantGarde-Book"];
     node [fontname="AvantGarde-Book" shape="box" pad=0.7];
     edge [fontname="AvantGarde-Book"];
