@@ -4,7 +4,7 @@ digraph g {
     node [fontname="AvantGarde-Book" shape="box" pad=0.7];
     edge [fontname="AvantGarde-Book"];
 
-    "go install golangleipzig.space/clt23" [style="filled" fillcolor="lightyellow"];
+    "go install golangleipzig.space/clt23@latest" [style="filled" fillcolor="lightyellow"];
     "golangleipzig.space/clt23" [label=<<FONT COLOR="darkgray">https://</FONT>golangleipzig.space/clt23<FONT COLOR="darkgray">?go-get=1</FONT>>];
     "git clone" [label=<git clone <FONT COLOR="darkgray">https://...</FONT>>];
     "meta" [label=<golangleipzig.space/clt23 git <B>github.com/golangleipzig/clt23</B><BR/><FONT COLOR="mediumpurple" POINT-SIZE="8">&lt;meta name="go-import" content="..."&gt;</FONT>>];
@@ -15,9 +15,9 @@ digraph g {
     "go tool calls vcs" [label=<go tool calls <B>vcs</B>>];
     "clt23" [style="filled" fillcolor="lightyellow"];
 
-    "go install golangleipzig.space/clt23" -> "golangleipzig.space/clt23";
+    "go install golangleipzig.space/clt23@latest" -> "golangleipzig.space/clt23";
 
-    "go install golangleipzig.space/clt23" -> "module proxy" [style="dashed"];
+    "go install golangleipzig.space/clt23@latest" -> "module proxy" [style="dashed"];
     "module proxy" -> "golangleipzig.space/clt23" [style="dashed"];
 
     "golangleipzig.space/clt23" -> "meta";
