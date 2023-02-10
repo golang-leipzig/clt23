@@ -1,16 +1,35 @@
 digraph g {
+    label="go install flow | golangleipzig.space | 02/2023" fontsize="10";
     graph [fontname="AvantGarde-Book"];
     node [fontname="AvantGarde-Book" shape="box" pad=0.7];
     edge [fontname="AvantGarde-Book"];
 
+    "go install golangleipzig.space/clt23" [style="filled" fillcolor="lightyellow"];
     "golangleipzig.space/clt23" [label=<<FONT COLOR="darkgray">https://</FONT>golangleipzig.space/clt23<FONT COLOR="darkgray">?go-get=1</FONT>>];
     "git clone" [label=<git clone <FONT COLOR="darkgray">https://...</FONT>>];
-    "github.com/golangleipzig/clt23" [label=<golangleipzig.space/clt23 git <B>github.com/golangleipzig/clt23</B>>];
-    "git clone" [label=<git clone <FONT COLOR="darkgray">into module cache</FONT>>];
+    "meta" [label=<golangleipzig.space/clt23 git <B>github.com/golangleipzig/clt23</B><BR/><FONT COLOR="mediumpurple" POINT-SIZE="8">&lt;meta name="go-import" content="..."&gt;</FONT>>];
+    "repo" [label=<github.com/golang-leipzig/clt23<BR/><FONT COLOR="mediumpurple" POINT-SIZE="8">&lt;meta name="go-import" content="..."&gt;</FONT>>];
+    "git clone" [label=<git clone <FONT COLOR="darkgray">into module cache</FONT><BR/><FONT COLOR="mediumpurple" POINT-SIZE="8">e.g. ~/go/pkg/mod/</FONT>>];
+    "module proxy" [label=<module proxy<BR/><FONT POINT-SIZE="8" COLOR="mediumpurple">proxy.golang.org</FONT>>];
+    "repourl" [label="https://github.com/golang-leipzig/clt23.git"];
+    "go tool calls vcs" [label=<go tool calls <B>vcs</B>>];
+    "clt23" [style="filled" fillcolor="lightyellow"];
 
     "go install golangleipzig.space/clt23" -> "golangleipzig.space/clt23";
-    "golangleipzig.space/clt23" -> "github.com/golangleipzig/clt23" [label=<<FONT COLOR="darkgray">html, meta tag</FONT>> labeldistance=4];
-    "github.com/golangleipzig/clt23" -> "git clone" [label=<<FONT COLOR="darkgray">go tool calls VCS</FONT>>];
-    "git clone" -> "go build ...";
+
+    "go install golangleipzig.space/clt23" -> "module proxy" [style="dashed"];
+    "module proxy" -> "golangleipzig.space/clt23" [style="dashed"];
+
+    "golangleipzig.space/clt23" -> "meta";
+    "meta" -> "repo";
+    "repo" -> "repourl";
+    "repourl" -> "git clone";
     "go build ..." -> "go install ...";
+
+    {
+        rank="same";
+        "go tool calls vcs" -> "git clone";
+        "git clone" -> "go build ...";
+    }
+    "go install ..." -> "clt23";
 }
