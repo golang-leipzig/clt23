@@ -25,8 +25,8 @@ Welcome CLT 2023 visitor!
 
 If you are interested in Go and cloud infrastructure topics, please visit us at
 https://golangleipzig.space - our meetups are fun and well documented, it's not
-far by 🚂 and we also regularly stream our meetings so you can join us via 📱
-or 🖳, too.
+far by 🚂 and we also regularly stream our events so you can join us via 📱 or
+🖳, too.
 `
 
 func main() {
