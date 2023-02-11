@@ -8,10 +8,10 @@ digraph g {
     "golangleipzig.space/clt23" [label=<<FONT COLOR="darkgray">https://</FONT>golangleipzig.space/clt23<FONT COLOR="darkgray">?go-get=1</FONT>>];
     "git clone" [label=<git clone <FONT COLOR="darkgray">https://...</FONT>>];
     "meta" [label=<golangleipzig.space/clt23 git <B>github.com/golangleipzig/clt23</B><BR/><FONT COLOR="mediumpurple" POINT-SIZE="8">&lt;meta name="go-import" content="..."&gt;</FONT>>];
-    "repo" [label=<github.com/golang-leipzig/clt23<BR/><FONT COLOR="mediumpurple" POINT-SIZE="8">&lt;meta name="go-import" content="..."&gt;</FONT>>];
+    "repo" [label=<<FONT COLOR="darkgray">https://</FONT>github.com/golang-leipzig/clt23<FONT COLOR="darkgray">?go-get=1</FONT>>];
     "git clone" [label=<git clone <FONT COLOR="darkgray">into module cache</FONT><BR/><FONT COLOR="mediumpurple" POINT-SIZE="8">e.g. ~/go/pkg/mod/</FONT>>];
     "module proxy" [label=<module proxy<BR/><FONT POINT-SIZE="8" COLOR="mediumpurple">proxy.golang.org</FONT>>];
-    "repourl" [label="https://github.com/golang-leipzig/clt23.git"];
+    "repourl" [label=<<FONT COLOR="darkgray">... git</FONT> <B>https://github.com/golang-leipzig/clt23.git</B><BR/><FONT COLOR="mediumpurple" POINT-SIZE="8">&lt;meta name="go-import" content="..."&gt;</FONT>>];
     "go tool calls vcs" [label=<go tool calls <B>vcs</B>>];
     "clt23" [style="filled" fillcolor="lightyellow"];
 
