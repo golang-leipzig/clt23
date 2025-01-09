@@ -1,0 +1,38 @@
+digraph go_install_flow {
+    // Graph settings
+    rankdir=TB;
+    node [shape=box, fontname="Arial"];
+    edge [fontname="Arial"];
+
+    // Nodes
+    install_cmd [label="go install golangleipzig.space/clt23@latest", style=filled, fillcolor=lightyellow];
+    proxy [label="module proxy\nproxy.golang.org", shape=box];
+    url1 [label="https://golangleipzig.space/clt23?go-get=1", color=gray];
+    meta [label="golangleipzig.space/clt23 git github.com/golangleipzig/clt23\n<meta name=\"go-import\" content=\"...\""];
+    url2 [label="https://github.com/golang-leipzig/clt23?go-get=1", color=gray];
+    git_url [label="... git https://github.com/golang-leipzig/clt23.git\n<meta name=\"go-import\" content=\"...\""];
+
+    // Tool chain nodes
+    go_tool [label="go tool calls vcs"];
+    git_clone [label="git clone into module cache\ne.g. ~/go/pkg/mod/"];
+    go_build [label="go build ..."];
+    go_install_final [label="go install ..."];
+    final [label="clt23", style=filled, fillcolor=lightyellow];
+
+    // Edges
+    install_cmd -> proxy [style=dashed];
+    install_cmd -> url1;
+    proxy -> url1 [style=dashed];
+    url1 -> meta;
+    meta -> url2;
+    url2 -> git_url;
+    git_url -> go_tool;
+    go_tool -> git_clone;
+    git_clone -> go_build;
+    go_build -> go_install_final;
+    go_install_final -> final;
+
+    // Footer note
+    label = "go install flow · golangleipzig.space · 02/2023";
+    labelloc = "b";
+}
