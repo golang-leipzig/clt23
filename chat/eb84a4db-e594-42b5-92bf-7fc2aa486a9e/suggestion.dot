@@ -1,0 +1,79 @@
+digraph go_install_flow {
+    // Graph settings
+    rankdir=TB;
+    node [shape=box, fontname="AvantGarde-Book"];
+    edge [fontname="AvantGarde-Book", fontsize=10];
+
+    // Subgraph for proxy and checksum operations
+    subgraph cluster_proxy {
+        style=dashed;
+        color=gray;
+        label="Module Resolution Layer";
+
+        proxy [label="Module Proxy\nproxy.golang.org\n(or custom proxy)", shape=box];
+        sum_db [label="Sum Database\nsum.golang.org\nVerifies module authenticity"];
+
+        proxy -> sum_db [style=dotted, label="checksum\nverification"];
+    }
+
+    // Main flow nodes
+    install_cmd [label="go install golangleipzig.space/clt23@latest\nChecks go.mod and go.sum", style=filled, fillcolor=lightyellow];
+    url1 [label="https://golangleipzig.space/clt23?go-get=1", color=gray];
+    meta [label="golangleipzig.space/clt23 git github.com/golangleipzig/clt23\n<meta name=\"go-import\" content=\"...\""];
+    url2 [label="https://github.com/golang-leipzig/clt23?go-get=1", color=gray];
+    git_url [label="... git https://github.com/golang-leipzig/clt23.git\n<meta name=\"go-import\" content=\"...\""];
+
+    // Module cache and build subgraph
+    subgraph cluster_cache {
+        label="Module Cache Operations";
+        style=filled;
+        color=lightgrey;
+
+        go_tool [label="go tool calls vcs\nChecks GOPROXY, GONOPROXY,\nGOPRIVATE settings"];
+        git_clone [label="git clone into module cache\n$GOPATH/pkg/mod/\nPersistent cache location"];
+        version_check [label="Version Selection\n- Semantic versioning\n- go.mod requirements\n- Minimal version selection"];
+    }
+
+    // Build process subgraph
+    subgraph cluster_build {
+        label="Build Process";
+        color=lightblue;
+        style=filled;
+
+        go_build [label="go build ...\n- Dependency resolution\n- Code generation\n- Compilation"];
+        go_install_final [label="go install ...\n- Binary placement\n- Path configuration"];
+    }
+
+    final [label="clt23\nInstalled binary", style=filled, fillcolor=lightyellow];
+
+    // Error handling node
+    error_handle [label="Error Handling\n- Network issues\n- Version conflicts\n- Checksum mismatches", color=red, style=dashed];
+
+    // Main flow edges
+    install_cmd -> proxy [style=dashed, label="1. Check proxy"];
+    install_cmd -> url1 [label="2. Direct if no proxy"];
+    proxy -> url1 [style=dashed];
+    url1 -> meta;
+    meta -> url2;
+    url2 -> git_url;
+    git_url -> go_tool;
+    go_tool -> git_clone;
+    git_clone -> version_check;
+    version_check -> go_build;
+    go_build -> go_install_final;
+    go_install_final -> final;
+
+    // Error handling edges
+    git_clone -> error_handle [style=dotted, color=red];
+    version_check -> error_handle [style=dotted, color=red];
+    proxy -> error_handle [style=dotted, color=red];
+
+    // Replacement directive example
+    replace_note [label="replace directive\ncan override\nmodule source", style=filled, fillcolor=lightpink];
+    replace_note -> git_clone [style=dashed, color=pink];
+
+    // Footer
+    label = "Enhanced go install flow · Including module resolution and caching · 02/2023\nEnhanced by Claude 3.5 Sonnet (April 2024)";
+    labelloc = "b";
+    fontname = "AvantGarde-Book";
+}
